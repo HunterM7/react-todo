@@ -1,0 +1,43 @@
+//? == Welcome Page ==
+
+@import '../../../styles/vars';
+
+.wrapper {
+	width: 100vw;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	width: 350px;
+	padding: 20px;
+
+	border-radius: 10px;
+
+	box-shadow: $SmoothShadow;
+}
+
+.title {
+	margin-bottom: 20px;
+}
+
+.input {
+	width: 100%;
+
+	border-radius: 8px;
+	border: 1px solid rgba($Color-Dark-LT, 0.1);
+
+	padding: 10px 15px;
+	margin-bottom: 20px;
+
+	&::placeholder {
+		font-size: 14px;
+		font-weight: 400;
+		letter-spacing: 0.02em;
+		color: rgba($Black, 0.3);
+	}
+}
