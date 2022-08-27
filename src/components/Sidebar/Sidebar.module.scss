@@ -1,0 +1,26 @@
+//? == Sidebar ==
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	width: 100%;
+
+	padding: 20px;
+
+	overflow-y: auto;
+}
+
+.infoblock {
+	display: grid;
+	row-gap: 60px;
+}
+
+.logo {
+}
+
+.categories {
+	display: grid;
+	row-gap: 30px;
+}
