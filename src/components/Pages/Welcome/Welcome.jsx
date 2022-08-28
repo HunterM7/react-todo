@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
 	signInWithEmailAndPassword,
-	onAuthStateChanged,
+	// onAuthStateChanged,
 	createUserWithEmailAndPassword,
 } from 'firebase/auth'
 import { auth } from '../../../firebase.js'
@@ -11,7 +11,6 @@ import styles from './Welcome.module.scss'
 
 import FacebookIcon from '@mui/icons-material/Facebook'
 import TwitterIcon from '@mui/icons-material/Twitter'
-import { Preview } from '@mui/icons-material'
 import Button from '../../Button/Button'
 
 const Welcome = () => {
@@ -33,7 +32,7 @@ const Welcome = () => {
 				navigate('home')
 			}
 		})
-	}, [])
+	}, [navigate])
 
 	const handleEmailChange = (e) => {
 		setEmail(e.target.value)
@@ -76,7 +75,7 @@ const Welcome = () => {
 			<div className={styles.container}>
 				{isRegistering ? (
 					<>
-						<h3>Регистрация</h3>
+						<h4>Регистрация</h4>
 						<input
 							className={styles.input}
 							type='email'
@@ -128,7 +127,7 @@ const Welcome = () => {
 					</>
 				) : (
 					<>
-						<h3 className={styles.title}>Вход в аккаунт</h3>
+						<h4 className={styles.title}>Вход в аккаунт</h4>
 
 						<input
 							className={styles.input}

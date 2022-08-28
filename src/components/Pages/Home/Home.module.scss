@@ -8,15 +8,65 @@
 
 	width: 100vw;
 	height: 100vh;
+
+	position: relative;
 }
 
 .main {
 	width: 100%;
 	height: 100%;
 
-	background-color: $Color-BG-LT;
+	padding: 20px 70px;
 
+	overflow-y: auto;
+
+	background-color: $Color-BG-LT;
+}
+
+.header {
 	display: flex;
-	justify-content: center;
+	flex-direction: row;
+	justify-content: space-between;
 	align-items: center;
+}
+
+.themeBtn {
+	width: 24px;
+	height: 24px;
+
+	svg {
+		width: 100%;
+		height: 100%;
+
+		path {
+			stroke: rgba($Color-Dark-LT, 0.7);
+		}
+	}
+}
+
+.profile {
+	&__title {
+		font-size: 16px;
+		font-weight: 600;
+		letter-spacing: 0;
+	}
+}
+
+.newTask {
+	display: none;
+	width: 100vw;
+	height: 100vh;
+
+	background-color: rgba($Color-Dark-LT, 0.3);
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+
+	&.active {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }

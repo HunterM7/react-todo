@@ -14,16 +14,38 @@ h2 {
 }
 
 h3 {
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	color: $PrimaryGreen;
+}
+
+h4 {
 	font-size: 18px;
 	font-weight: 600;
 	letter-spacing: 0.02em;
 	color: $PrimaryGreen;
 }
 
-h4 {
+h5 {
 	font-size: 16px;
 	font-weight: 400;
 	letter-spacing: 0.025em;
+	color: $Color-Dark-LT;
+}
+
+h6 {
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	color: $Color-Dark-LT;
+}
+
+p {
+	font-family: 'Nunito', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: 0.02em;
 	color: $Color-Dark-LT;
 }
 

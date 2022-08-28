@@ -17,7 +17,7 @@ const SidebarRow = ({
 			onClick={onClick}
 		>
 			<img src={img} alt='Иконка' />
-			<h4 className={styles.title}>{title}</h4>
+			<h5 className={styles.title}>{title}</h5>
 		</button>
 	)
 }
