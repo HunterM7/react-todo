@@ -1,0 +1,78 @@
+//? == Button ==
+
+@import '../../styles/vars';
+
+.wrapper {
+	padding: 10px 25px;
+
+	border-radius: 8px;
+
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.38;
+	letter-spacing: 0.01em;
+	color: $Color-BG-LT;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.green {
+	border-color: $PrimaryGreen;
+	background-color: $PrimaryGreen;
+
+	&.hollow {
+		color: $PrimaryGreen;
+
+		.img {
+			path {
+				stroke: $PrimaryGreen;
+			}
+		}
+	}
+}
+
+.red {
+	border-color: $PrimaryRed;
+	background-color: $PrimaryRed;
+
+	&.hollow {
+		color: $PrimaryRed;
+
+		.img {
+			path {
+				stroke: $PrimaryRed;
+			}
+		}
+	}
+}
+
+.gold {
+	border-color: $PrimaryYellow;
+	background-color: $PrimaryYellow;
+
+	&.hollow {
+		color: $PrimaryYellow;
+
+		.img {
+			path {
+				stroke: $PrimaryYellow;
+			}
+		}
+	}
+}
+
+.hollow {
+	border-width: 1px;
+	border-style: solid;
+	background-color: transparent;
+}
+
+.img {
+	width: 18px;
+	height: 18px;
+
+	margin-right: 10px;
+}

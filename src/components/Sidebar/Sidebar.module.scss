@@ -1,5 +1,7 @@
 //? == Sidebar ==
 
+@import '../../styles/vars';
+
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -12,6 +14,9 @@
 	padding: 20px;
 
 	overflow-y: auto;
+
+	box-shadow: $SmoothShadow;
+	z-index: 100;
 }
 
 .infoblock {

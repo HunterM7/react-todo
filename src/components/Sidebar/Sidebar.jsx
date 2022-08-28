@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { signOut } from 'firebase/auth'
+import { signOut, onAuthStateChanged } from 'firebase/auth'
 
 import styles from './Sidebar.module.scss'
 import { auth } from '../../firebase.js'
@@ -44,12 +44,12 @@ const Sidebar = () => {
 		},
 	]
 
-	let categoriesList = categories.map((el) => {
-		return <SidebarRow {...el} />
+	let categoriesList = categories.map((el, i) => {
+		return <SidebarRow {...el} key={i} />
 	})
 
-	let dataList = datas.map((el) => {
-		return <SidebarRow {...el} />
+	let dataList = datas.map((el, i) => {
+		return <SidebarRow {...el} key={i} />
 	})
 
 	const navigate = useNavigate()
@@ -59,6 +59,14 @@ const Sidebar = () => {
 			.then(() => navigate('/'))
 			.catch((err) => console.log(err))
 	}
+
+	React.useEffect(() => {
+		auth.onAuthStateChanged((user) => {
+			if (!user) {
+				navigate('/')
+			}
+		})
+	}, [])
 
 	return (
 		<aside className={styles.wrapper}>
