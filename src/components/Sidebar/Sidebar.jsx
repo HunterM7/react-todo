@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { signOut, onAuthStateChanged } from 'firebase/auth'
+import { signOut } from 'firebase/auth'
 
 import styles from './Sidebar.module.scss'
 import { auth } from '../../firebase.js'
@@ -66,7 +66,7 @@ const Sidebar = () => {
 				navigate('/')
 			}
 		})
-	}, [])
+	}, [navigate])
 
 	return (
 		<aside className={styles.wrapper}>

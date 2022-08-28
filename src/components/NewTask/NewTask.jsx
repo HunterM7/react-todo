@@ -1,8 +1,27 @@
 import React from 'react'
+import { uid } from 'uid'
+import { set, ref } from 'firebase/database'
 
 import styles from './NewTask.module.scss'
+import { auth, db } from '../../firebase'
 
 const NewTask = () => {
+	const [todo, setTodo] = React.useState('')
+
+	// Read all Todos
+
+	// Add Todo function
+	const writeToDatabase = () => {
+		const uidd = uid()
+
+		set(ref(db, `/${auth.currentUser.uid}/${uidd}`), {
+			todo,
+			uidd,
+		})
+
+		setTodo('')
+	}
+
 	return (
 		<div
 			className={styles.wrapper}
@@ -19,8 +38,11 @@ const NewTask = () => {
 					type='text'
 					placeholder='Опиши задачу'
 					className={styles.desc__input}
+					value={todo}
+					onChange={(e) => setTodo(e.target.value)}
 				/>
 			</div>
+			<button onClick={writeToDatabase}>button</button>
 		</div>
 	)
 }

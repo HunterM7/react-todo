@@ -1,14 +1,41 @@
 import React from 'react'
+import { onValue, ref } from 'firebase/database'
 
 import styles from './Home.module.scss'
+import { auth, db } from '../../../firebase'
 
 import Sidebar from '../../Sidebar/Sidebar'
 import Button from '../../Button/Button'
 import NewTask from '../../NewTask/NewTask'
 
 const Home = () => {
+	const [todos, setTodos] = React.useState([])
 	const [isPopupVisible, setIsPopupVisible] =
 		React.useState(false)
+
+	// Getting ToDo list
+	React.useEffect(() => {
+		auth.onAuthStateChanged((user) => {
+			if (user) {
+				onValue(
+					ref(db, `/${auth.currentUser.uid}`),
+					(snapshot) => {
+						setTodos([])
+						const data = snapshot.val()
+						if (data !== null) {
+							Object.values(data).forEach((todo) => {
+								setTodos((oldArr) => [...oldArr, todo])
+							})
+						}
+					},
+				)
+			}
+		})
+	}, [])
+
+	const todoList = todos.map((todo) => {
+		return <h1>{todo.todo}</h1>
+	})
 
 	return (
 		<div className={styles.wrapper}>
@@ -43,6 +70,7 @@ const Home = () => {
 						</p>
 					</div>
 				</header>
+				{todoList}
 			</main>
 
 			<div
