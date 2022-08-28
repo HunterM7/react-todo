@@ -1,7 +1,9 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { signOut } from 'firebase/auth'
 
 import styles from './Sidebar.module.scss'
+import { auth } from '../../firebase.js'
 
 import SidebarRow from './SidebarRow/SidebarRow'
 
@@ -29,9 +31,34 @@ const Sidebar = () => {
 		},
 	]
 
+	const datas = [
+		{
+			title: 'Статистика',
+			isActive: false,
+			img: '/img/icons/stats.svg',
+		},
+		{
+			title: 'Сравнить',
+			isActive: false,
+			img: '/img/icons/compare.svg',
+		},
+	]
+
 	let categoriesList = categories.map((el) => {
 		return <SidebarRow {...el} />
 	})
+
+	let dataList = datas.map((el) => {
+		return <SidebarRow {...el} />
+	})
+
+	const navigate = useNavigate()
+
+	const handleSignOut = () => {
+		signOut(auth)
+			.then(() => navigate('/'))
+			.catch((err) => console.log(err))
+	}
 
 	return (
 		<aside className={styles.wrapper}>
@@ -49,9 +76,17 @@ const Sidebar = () => {
 
 				<div className={styles.data}>
 					<h2 className={styles.title}>Данные</h2>
+					{dataList}
 				</div>
 			</div>
-			<div className={styles.logout}>Выйти</div>
+			<div className={styles.logout}>
+				<SidebarRow
+					title='Выйти'
+					isActive={false}
+					img='/img/icons/exit.svg'
+					onClick={handleSignOut}
+				/>
+			</div>
 		</aside>
 	)
 }

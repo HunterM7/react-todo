@@ -6,17 +6,19 @@ const SidebarRow = ({
 	title = 'unknown',
 	isActive,
 	img,
+	onClick,
 }) => {
 	return (
-		<div
+		<button
 			className={`
-			${styles.wrapper}
-			${isActive ? styles['wrapper--active'] : ''}
-		`}
+				${styles.wrapper}
+				${isActive ? styles['wrapper--active'] : ''}
+			`}
+			onClick={onClick}
 		>
 			<img src={img} alt='Иконка' />
 			<h4 className={styles.title}>{title}</h4>
-		</div>
+		</button>
 	)
 }
 

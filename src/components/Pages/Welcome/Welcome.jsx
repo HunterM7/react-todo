@@ -1,6 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import {
+	signInWithEmailAndPassword,
+	onAuthStateChanged,
+} from 'firebase/auth'
 import { auth } from '../../../firebase.js'
 
 import styles from './Welcome.module.scss'
@@ -12,6 +15,14 @@ const Welcome = () => {
 	const [email, setEmail] = React.useState('')
 	const [password, setPassword] = React.useState('')
 	const navigate = useNavigate()
+
+	React.useEffect(() => {
+		auth.onAuthStateChanged((user) => {
+			if (user) {
+				navigate('home')
+			}
+		})
+	}, [])
 
 	const handleEmailChange = (e) => {
 		setEmail(e.target.value)
