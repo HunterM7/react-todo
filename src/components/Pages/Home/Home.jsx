@@ -9,10 +9,13 @@ import Button from '../../Button/Button'
 import NewTask from '../../NewTask/NewTask'
 import Card from '../../Card/Card'
 import TaskRow from '../../TaskRow/TaskRow'
+import ProfileRow from '../../ProfileRow/ProfileRow'
 
 const Home = () => {
 	const [todos, setTodos] = React.useState([])
 	const [isPopupVisible, setIsPopupVisible] =
+		React.useState(false)
+	const [isProfileVisible, setIsProfileVisible] =
 		React.useState(false)
 
 	// Getting ToDo list
@@ -37,6 +40,39 @@ const Home = () => {
 
 	const todoList = todos.map((todo) => {
 		return <TaskRow todo={todo} />
+	})
+
+	const profileArr = [
+		{
+			title: 'Личный кабинет',
+			img: '/img/icons/user.svg',
+		},
+		{
+			title: 'Темный режим',
+			img: '/img/icons/moon.svg',
+		},
+		{
+			title: 'Настройки',
+			img: '/img/icons/settings.svg',
+		},
+		{
+			title: 'Премиум',
+			img: '/img/icons/star.svg',
+		},
+		{
+			title: 'Выйти',
+			img: '/img/icons/exit.svg',
+		},
+	]
+
+	const profileList = profileArr.map((el) => {
+		return (
+			<ProfileRow
+				title={el.title}
+				img={el.img}
+				onClick={() => console.log(el.title)}
+			/>
+		)
 	})
 
 	return (
@@ -70,7 +106,12 @@ const Home = () => {
 						<p className={styles.profile__title}>
 							Хорошего дня, username
 						</p>
-						<button className={styles.profile__btn}>
+						<button
+							className={styles.profile__btn}
+							onClick={() =>
+								setIsProfileVisible(!isProfileVisible)
+							}
+						>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								width='14'
@@ -87,6 +128,19 @@ const Home = () => {
 								/>
 							</svg>
 						</button>
+
+						<div
+							className={`
+							${styles.profile__list}
+							${isProfileVisible ? styles.active : ''}
+						`}
+						>
+							<Card>
+								<div className={styles.profile__container}>
+									{profileList}
+								</div>
+							</Card>
+						</div>
 					</div>
 				</header>
 				<div className={styles.content}>
