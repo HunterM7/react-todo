@@ -28,6 +28,45 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+
+	margin-bottom: 30px;
+}
+
+.content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 30px;
+}
+
+.tasks {
+	&__header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+
+		margin-bottom: 20px;
+	}
+
+	&__title {
+	}
+
+	&__settings {
+		width: 28px;
+		height: 24px;
+
+		opacity: 0.4;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__main {
+		display: grid;
+		row-gap: 10px;
+	}
 }
 
 .themeBtn {
@@ -45,10 +84,35 @@
 }
 
 .profile {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	column-gap: 20px;
+
 	&__title {
 		font-size: 16px;
 		font-weight: 600;
 		letter-spacing: 0;
+	}
+
+	&__btn {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		width: 24px;
+		height: 24px;
+
+		border-radius: 5px;
+		background-color: $Color-BG-LT;
+		box-shadow: $SmoothShadow;
+
+		svg {
+			path {
+				stroke: $PrimaryGreen;
+			}
+		}
 	}
 }
 

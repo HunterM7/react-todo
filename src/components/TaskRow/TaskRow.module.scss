@@ -1,0 +1,19 @@
+//? == Task Row ==
+
+@import '../../styles/vars';
+
+.wrapper {
+	padding: 14px;
+
+	border-radius: 10px;
+	border: 1px solid rgba($Color-Dark-LT, 0.1);
+	background-color: $Color-White-LT;
+
+	transition: background-color $trans;
+
+	&:hover {
+		cursor: pointer;
+
+		background-color: rgba($PrimaryGreen, 0.02);
+	}
+}

@@ -7,6 +7,8 @@ import { auth, db } from '../../../firebase'
 import Sidebar from '../../Sidebar/Sidebar'
 import Button from '../../Button/Button'
 import NewTask from '../../NewTask/NewTask'
+import Card from '../../Card/Card'
+import TaskRow from '../../TaskRow/TaskRow'
 
 const Home = () => {
 	const [todos, setTodos] = React.useState([])
@@ -34,7 +36,7 @@ const Home = () => {
 	}, [])
 
 	const todoList = todos.map((todo) => {
-		return <h1>{todo.todo}</h1>
+		return <TaskRow todo={todo} />
 	})
 
 	return (
@@ -68,9 +70,75 @@ const Home = () => {
 						<p className={styles.profile__title}>
 							Хорошего дня, username
 						</p>
+						<button className={styles.profile__btn}>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								width='14'
+								height='8'
+								viewBox='0 0 14 8'
+								fill='none'
+							>
+								<path
+									d='M1 1L7 7L13 1'
+									stroke='#29A19C'
+									strokeWidth='1.5'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+								/>
+							</svg>
+						</button>
 					</div>
 				</header>
-				{todoList}
+				<div className={styles.content}>
+					<div className={styles.content__left}>
+						<Card className={styles.tasks}>
+							<div className={styles.tasks__header}>
+								<h4 className={styles.tasks__title}>
+									Активные задачи
+								</h4>
+								<button className={styles.tasks__settings}>
+									<svg
+										xmlns='http://www.w3.org/2000/svg'
+										width='28'
+										height='7'
+										viewBox='0 0 28 7'
+										fill='none'
+									>
+										<rect
+											y='0.5'
+											width='6'
+											height='6'
+											rx='3'
+											fill='#282846'
+										/>
+										<rect
+											x='11'
+											y='0.5'
+											width='6'
+											height='6'
+											rx='3'
+											fill='#282846'
+										/>
+										<rect
+											x='22'
+											y='0.5'
+											width='6'
+											height='6'
+											rx='3'
+											fill='#282846'
+										/>
+									</svg>
+								</button>
+							</div>
+							<div className={styles.tasks__main}>
+								{todoList}
+							</div>
+						</Card>
+					</div>
+					<div className={styles.content__right}>
+						right side
+					</div>
+				</div>
 			</main>
 
 			<div
@@ -80,7 +148,7 @@ const Home = () => {
 			`}
 				onClick={() => setIsPopupVisible(false)}
 			>
-				<NewTask />
+				<NewTask setIsPopupVisible={setIsPopupVisible} />
 			</div>
 		</div>
 	)
