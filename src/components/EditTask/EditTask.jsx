@@ -28,6 +28,12 @@ const NewTask = ({
 		closeFunc(false)
 	}
 
+	// Keydown
+	const handleKeyDown = (e) => {
+		if (e.key === 'Enter') handleUpdate(currentTodo.uidd)
+		if (e.key === 'Escape') canceling()
+	}
+
 	useEffect(() => {}, [currentTodo]) //?!
 
 	return (
@@ -36,7 +42,10 @@ const NewTask = ({
 			onClick={(e) => e.stopPropagation()}
 		>
 			<Card>
-				<div className={styles.container}>
+				<div
+					className={styles.container}
+					onKeyDown={handleKeyDown}
+				>
 					<h3 className={styles.title}>Изменить задачу</h3>
 					<div className={styles.desc}>
 						<h6 className={styles.desc__title}>
