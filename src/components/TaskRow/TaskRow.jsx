@@ -4,23 +4,20 @@ import { ref, remove } from 'firebase/database'
 import styles from './TaskRow.module.scss'
 import { auth, db } from '../../firebase'
 
-const TaskRow = ({ todo }) => {
+const TaskRow = ({ todo, editFunc }) => {
 	// Delete function
 	const handleDelete = (uid) => {
 		remove(ref(db, `/${auth.currentUser.uid}/${uid}`))
 	}
 
 	// Edit function
-	const handleEdit = () => {}
+	// const handleEdit = () => {}
 
 	return (
 		<div className={styles.wrapper}>
 			<p className={styles.text}>{todo.todo}</p>
 
-			<button
-				onClick={() => console.log('edit button')}
-				className={styles.btn}
-			>
+			<button onClick={editFunc} className={styles.btn}>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					width='18'

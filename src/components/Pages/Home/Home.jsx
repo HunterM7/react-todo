@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { onValue, ref } from 'firebase/database'
 
 import styles from './Home.module.scss'
@@ -7,19 +7,22 @@ import { auth, db } from '../../../firebase'
 import Sidebar from '../../Sidebar/Sidebar'
 import Button from '../../Button/Button'
 import NewTask from '../../NewTask/NewTask'
+import EditTask from '../../EditTask/EditTask'
 import Card from '../../Card/Card'
 import TaskRow from '../../TaskRow/TaskRow'
 import ProfileRow from '../../ProfileRow/ProfileRow'
 
 const Home = () => {
-	const [todos, setTodos] = React.useState([])
+	const [todos, setTodos] = useState([])
 	const [isPopupVisible, setIsPopupVisible] =
-		React.useState(false)
+		useState(false)
 	const [isProfileVisible, setIsProfileVisible] =
-		React.useState(false)
+		useState(false)
+	const [isEditVisible, setIsEditVisible] = useState(false)
+	const [currentTodo, setCurrentTodo] = useState({})
 
 	// Getting ToDo list
-	React.useEffect(() => {
+	useEffect(() => {
 		auth.onAuthStateChanged((user) => {
 			if (user) {
 				onValue(
@@ -39,7 +42,16 @@ const Home = () => {
 	}, [])
 
 	const todoList = todos.map((todo, i) => {
-		return <TaskRow key={i} todo={todo} />
+		return (
+			<TaskRow
+				key={i}
+				todo={todo}
+				editFunc={() => {
+					setCurrentTodo(todo)
+					setIsEditVisible(true)
+				}}
+			/>
+		)
 	})
 
 	// Profile list
@@ -250,7 +262,21 @@ const Home = () => {
 			`}
 				onClick={() => setIsPopupVisible(false)}
 			>
-				<NewTask setIsPopupVisible={setIsPopupVisible} />
+				<NewTask closeFunc={setIsPopupVisible} />
+			</div>
+
+			<div
+				className={`
+				${styles.newTask}
+				${isEditVisible ? styles.active : ''}
+			`}
+				onClick={() => setIsEditVisible(false)}
+			>
+				<EditTask
+					closeFunc={setIsEditVisible}
+					currentTodo={currentTodo}
+					setCurrentTodo={setCurrentTodo}
+				/>
 			</div>
 		</div>
 	)

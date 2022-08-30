@@ -1,0 +1,34 @@
+//? == New Task ==
+
+@import '../../styles/vars';
+
+.wrapper {
+	width: 700px;
+}
+
+.container {
+	display: grid;
+	gap: 30px;
+}
+
+.desc {
+	&__title {
+		margin-bottom: 10px;
+	}
+
+	&__input {
+		width: 100%;
+
+		padding: 8px 15px;
+
+		border-radius: 8px;
+		border: 1px solid rgba($Color-Dark-LT, 0.1);
+	}
+}
+
+.buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
