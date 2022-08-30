@@ -72,6 +72,21 @@
 	}
 }
 
+.noTasks {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	row-gap: 20px;
+
+	padding: 20px;
+
+	p {
+		font-size: 20px;
+		font-weight: 500;
+	}
+}
+
 .themeBtn {
 	width: 24px;
 	height: 24px;

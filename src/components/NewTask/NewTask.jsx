@@ -10,8 +10,6 @@ import Card from '../Card/Card'
 const NewTask = ({ closeFunc }) => {
 	const [todo, setTodo] = React.useState('')
 
-	// Read all Todos
-
 	// Add Todo function
 	const writeToDatabase = () => {
 		const uidd = uid()

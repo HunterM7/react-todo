@@ -24,12 +24,11 @@ const NewTask = ({
 
 	// Canceling
 	const canceling = () => {
-		setCurrentTodo({ todo: '' })
-		console.log(currentTodo)
+		setCurrentTodo({})
 		closeFunc(false)
 	}
 
-	useEffect(() => {}, [currentTodo])
+	useEffect(() => {}, [currentTodo]) //?!
 
 	return (
 		<div

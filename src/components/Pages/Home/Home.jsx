@@ -46,10 +46,8 @@ const Home = () => {
 			<TaskRow
 				key={i}
 				todo={todo}
-				editFunc={() => {
-					setCurrentTodo(todo)
-					setIsEditVisible(true)
-				}}
+				setCurrentTodo={setCurrentTodo}
+				setIsEditVisible={setIsEditVisible}
 			/>
 		)
 	})
@@ -199,7 +197,20 @@ const Home = () => {
 								</button>
 							</div>
 							<div className={styles.tasks__main}>
-								{todoList}
+								{todos.length > 0 ? (
+									todoList
+								) : (
+									<div className={styles.noTasks}>
+										<p>Добавьте хотя бы одну задачу!</p>
+										<Button
+											hasImg
+											title='Новая задача'
+											onClick={() =>
+												setIsPopupVisible(true)
+											}
+										/>
+									</div>
+								)}
 							</div>
 						</Card>
 					</div>
