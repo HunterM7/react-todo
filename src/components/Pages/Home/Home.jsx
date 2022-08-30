@@ -38,10 +38,11 @@ const Home = () => {
 		})
 	}, [])
 
-	const todoList = todos.map((todo) => {
-		return <TaskRow todo={todo} />
+	const todoList = todos.map((todo, i) => {
+		return <TaskRow key={i} todo={todo} />
 	})
 
+	// Profile list
 	const profileArr = [
 		{
 			title: 'Личный кабинет',
@@ -65,12 +66,13 @@ const Home = () => {
 		},
 	]
 
-	const profileList = profileArr.map((el) => {
+	const profileList = profileArr.map((el, i) => {
 		return (
 			<ProfileRow
 				title={el.title}
 				img={el.img}
 				onClick={() => console.log(el.title)}
+				key={i}
 			/>
 		)
 	})
@@ -190,7 +192,53 @@ const Home = () => {
 						</Card>
 					</div>
 					<div className={styles.content__right}>
-						right side
+						<Card>
+							<div className={styles.tasks__header}>
+								<h4 className={styles.tasks__title}>
+									Факт дня
+								</h4>
+								<button className={styles.tasks__settings}>
+									<svg
+										xmlns='http://www.w3.org/2000/svg'
+										width='28'
+										height='7'
+										viewBox='0 0 28 7'
+										fill='none'
+									>
+										<rect
+											y='0.5'
+											width='6'
+											height='6'
+											rx='3'
+											fill='#282846'
+										/>
+										<rect
+											x='11'
+											y='0.5'
+											width='6'
+											height='6'
+											rx='3'
+											fill='#282846'
+										/>
+										<rect
+											x='22'
+											y='0.5'
+											width='6'
+											height='6'
+											rx='3'
+											fill='#282846'
+										/>
+									</svg>
+								</button>
+							</div>
+							<div className={styles.tasks__main}>
+								<p className={styles.tasks__text}>
+									Человек, который просыпается в 6 утра, по
+									статистике, закрывает все задачи к 18:00
+									вечера. Попробуем также 🤔?
+								</p>
+							</div>
+						</Card>
 					</div>
 				</div>
 			</main>
