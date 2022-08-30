@@ -29,6 +29,12 @@ const NewTask = ({ closeFunc }) => {
 		closeFunc(false)
 	}
 
+	// Keydown
+	const handleKeyDown = (e) => {
+		if (e.key === 'Enter') writeToDatabase()
+		if (e.key === 'Escape') canceling()
+	}
+
 	return (
 		<div
 			className={styles.wrapper}
@@ -49,6 +55,7 @@ const NewTask = ({ closeFunc }) => {
 							className={styles.desc__input}
 							value={todo}
 							onChange={(e) => setTodo(e.target.value)}
+							onKeyDown={handleKeyDown}
 						/>
 					</div>
 					<div className={styles.buttons}>

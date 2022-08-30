@@ -74,7 +74,12 @@ const Welcome = () => {
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
 				{isRegistering ? (
-					<>
+					<div
+						className={styles.container__inner}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter') handleRegister()
+						}}
+					>
 						<h4>Регистрация</h4>
 						<input
 							className={styles.input}
@@ -124,9 +129,14 @@ const Welcome = () => {
 						>
 							Назад
 						</button>
-					</>
+					</div>
 				) : (
-					<>
+					<div
+						className={styles.container__inner}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter') handleSignIn()
+						}}
+					>
 						<h4 className={styles.title}>Вход в аккаунт</h4>
 
 						<input
@@ -167,7 +177,7 @@ const Welcome = () => {
 								<TwitterIcon />
 							</button>
 						</div>
-					</>
+					</div>
 				)}
 			</div>
 		</div>
