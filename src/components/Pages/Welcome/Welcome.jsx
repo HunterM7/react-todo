@@ -1,13 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import {
-	signInWithEmailAndPassword,
-	// onAuthStateChanged,
-	createUserWithEmailAndPassword,
-} from 'firebase/auth'
-import { auth } from '../../../firebase.js'
 
 import styles from './Welcome.module.scss'
+import { auth } from '../../../firebase.js'
+import { AuthContext } from '../../../context'
 
 import FacebookIcon from '@mui/icons-material/Facebook'
 import TwitterIcon from '@mui/icons-material/Twitter'
@@ -27,6 +23,9 @@ const Welcome = () => {
 		confirmPassword: '',
 	})
 
+	const { handleSignIn, handleRegister } =
+		React.useContext(AuthContext)
+
 	const navigate = useNavigate()
 
 	React.useEffect(() => {
@@ -45,31 +44,13 @@ const Welcome = () => {
 		setPassword(e.target.value)
 	}
 
-	// SignIn
-	const handleSignIn = () => {
-		signInWithEmailAndPassword(auth, email, password)
-			.then(() => {
-				navigate('/home')
-			})
-			.catch((err) => console.log(err.message))
-	}
-
-	// Registration
-	const handleRegister = () => {
+	const handleRegisterFunc = () => {
 		if (
 			registerInfo.password !== registerInfo.confirmPassword
 		) {
 			alert('Different passwords')
 		} else {
-			createUserWithEmailAndPassword(
-				auth,
-				registerInfo.email,
-				registerInfo.password,
-			)
-				.then((user) => {
-					navigate('home')
-				})
-				.catch((err) => console.log(err))
+			handleRegister(registerInfo)
 		}
 	}
 
@@ -87,7 +68,8 @@ const Welcome = () => {
 							<div
 								className={styles.container__inner}
 								onKeyDown={(e) => {
-									if (e.key === 'Enter') handleRegister()
+									if (e.key === 'Enter')
+										handleRegisterFunc()
 								}}
 							>
 								<h4>Регистрация</h4>
@@ -130,7 +112,7 @@ const Welcome = () => {
 
 								<Button
 									title='Зарегистрироваться'
-									onClick={handleRegister}
+									onClick={handleRegisterFunc}
 								/>
 
 								<button
@@ -169,7 +151,9 @@ const Welcome = () => {
 
 								<Button
 									title='Войти'
-									onClick={handleSignIn}
+									onClick={() =>
+										handleSignIn(email, password)
+									}
 								/>
 
 								<p className={styles.text}>

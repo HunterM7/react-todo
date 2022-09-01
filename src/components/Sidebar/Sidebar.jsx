@@ -1,9 +1,7 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { signOut } from 'firebase/auth'
+import React, { useContext } from 'react'
 
 import styles from './Sidebar.module.scss'
-import { auth } from '../../firebase.js'
+import { AuthContext } from '../../context'
 
 import Logo from '../Logo/Logo'
 import SidebarRow from './SidebarRow/SidebarRow'
@@ -64,21 +62,15 @@ const Sidebar = () => {
 		return <SidebarRow {...el} key={i} />
 	})
 
-	const navigate = useNavigate()
+	const { handleSignOut } = useContext(AuthContext)
 
-	const handleSignOut = () => {
-		signOut(auth)
-			.then(() => navigate('/'))
-			.catch((err) => console.log(err))
-	}
-
-	React.useEffect(() => {
-		auth.onAuthStateChanged((user) => {
-			if (!user) {
-				navigate('/')
-			}
-		})
-	}, [navigate])
+	// React.useEffect(() => {
+	// 	auth.onAuthStateChanged((user) => {
+	// 		if (!user) {
+	// 			navigate('/')
+	// 		}
+	// 	})
+	// }, [navigate])
 
 	return (
 		<aside className={styles.wrapper}>

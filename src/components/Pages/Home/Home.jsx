@@ -3,14 +3,7 @@ import { onValue, ref } from 'firebase/database'
 
 import styles from './Home.module.scss'
 import { auth, db } from '../../../firebase'
-
-import Sidebar from '../../Sidebar/Sidebar'
-import Button from '../../Button/Button'
-import NewTask from '../../NewTask/NewTask'
-import EditTask from '../../EditTask/EditTask'
-import Card from '../../Card/Card'
-import TaskRow from '../../TaskRow/TaskRow'
-import ProfileRow from '../../ProfileRow/ProfileRow'
+import { AuthContext } from '../../../context'
 import {
 	userIcon,
 	exitIcon,
@@ -20,6 +13,14 @@ import {
 	contextMenuIcon,
 	arrowIcon,
 } from '../../../assets/icons'
+
+import Sidebar from '../../Sidebar/Sidebar'
+import Button from '../../Button/Button'
+import NewTask from '../../NewTask/NewTask'
+import EditTask from '../../EditTask/EditTask'
+import Card from '../../Card/Card'
+import TaskRow from '../../TaskRow/TaskRow'
+import ProfileRow from '../../ProfileRow/ProfileRow'
 import ThemeSwitcher from '../../ThemeSwitcher/ThemeSwitcher'
 
 const Home = () => {
@@ -30,6 +31,9 @@ const Home = () => {
 		useState(false)
 	const [isEditVisible, setIsEditVisible] = useState(false)
 	const [currentTodo, setCurrentTodo] = useState({})
+
+	// SignOut Function
+	const { handleSignOut } = React.useContext(AuthContext)
 
 	// Getting ToDo list
 	useEffect(() => {
@@ -87,7 +91,7 @@ const Home = () => {
 		{
 			title: 'Выйти',
 			img: exitIcon,
-			onClickFunc: () => console.log('Выйти'),
+			onClickFunc: () => handleSignOut(),
 		},
 	]
 
