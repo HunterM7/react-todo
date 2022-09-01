@@ -67,22 +67,27 @@ const Home = () => {
 		{
 			title: 'Личный кабинет',
 			img: userIcon,
+			onClickFunc: () => console.log('Личный кабинет'),
 		},
 		{
 			title: 'Темный режим',
 			img: darkThemeIcon,
+			onClickFunc: () => console.log('Темный режим'),
 		},
 		{
 			title: 'Настройки',
 			img: settingsIcon,
+			onClickFunc: () => console.log('Настройки'),
 		},
 		{
 			title: 'Премиум',
 			img: premiumIcon,
+			onClickFunc: () => console.log('Премиум'),
 		},
 		{
 			title: 'Выйти',
 			img: exitIcon,
+			onClickFunc: () => console.log('Выйти'),
 		},
 	]
 
@@ -91,7 +96,7 @@ const Home = () => {
 			<ProfileRow
 				title={el.title}
 				img={el.img}
-				onClick={() => console.log(el.title)}
+				onClick={el.onClickFunc}
 				key={i}
 			/>
 		)
@@ -107,9 +112,7 @@ const Home = () => {
 						title='Новая задача'
 						onClick={() => setIsPopupVisible(true)}
 					/>
-
 					{<ThemeSwitcher />}
-
 					<div className={styles.profile}>
 						<p className={styles.profile__title}>
 							Хорошего дня, username

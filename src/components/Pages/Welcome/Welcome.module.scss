@@ -3,23 +3,56 @@
 @import '../../../styles/vars';
 
 .wrapper {
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+
+	overflow-y: auto;
+
+	background-color: var(--Color-BG2);
+}
+
+.header {
+	height: 94px;
+
+	padding: 20px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.footer {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+
+	column-gap: 50px;
+
+	padding: 20px;
+
+	&__link {
+		color: var(--Color-Gray);
+	}
+}
+
+.main {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	padding: 20px;
 }
 
 .container {
-	width: 350px;
-	padding: 20px;
-	
-	border-radius: 10px;
-	
-	box-shadow: $SmoothShadow;
-	
+	width: 100%;
+	max-width: 350px;
+
 	&__inner {
 		display: flex;
 		flex-direction: column;
@@ -35,7 +68,7 @@
 	width: 100%;
 
 	border-radius: 8px;
-	border: 1px solid rgba($Color-Dark-LT, 0.1);
+	border: 1px solid var(--Color-Border);
 
 	padding: 10px 15px;
 
@@ -43,7 +76,7 @@
 		font-size: 14px;
 		font-weight: 400;
 		letter-spacing: 0.02em;
-		color: rgba($Black, 0.3);
+		color: var(--Color-Gray);
 	}
 }
 
@@ -51,7 +84,7 @@
 	font-size: 12px;
 	font-weight: 400;
 	letter-spacing: 0.01em;
-	color: $Black;
+	color: var(--Color-Text);
 }
 
 .registrationBtn {
@@ -83,7 +116,7 @@
 	font-weight: 600;
 	line-height: 2;
 	letter-spacing: 0.01em;
-	color: rgba($Color-Dark-LT, 0.4);
+	color: var(--Color-Gray);
 
 	&::before,
 	&::after {
@@ -92,7 +125,7 @@
 		width: 100%;
 		height: 1px;
 
-		background-color: rgba($Color-Dark-LT, 0.4);
+		background-color: var(--Color-Gray);
 	}
 
 	&::before {

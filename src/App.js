@@ -5,7 +5,7 @@ import Welcome from './components/Pages/Welcome/Welcome'
 
 function App() {
 	return (
-		<div className='App'>
+		<div className='app'>
 			<Routes>
 				<Route path='/' element={<Welcome />} />
 				<Route path='home' element={<Home />} />

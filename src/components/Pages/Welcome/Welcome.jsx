@@ -12,6 +12,9 @@ import styles from './Welcome.module.scss'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import Button from '../../Button/Button'
+import Card from '../../Card/Card'
+import Logo from '../../Logo/Logo'
+import ThemeSwitcher from '../../ThemeSwitcher/ThemeSwitcher'
 
 const Welcome = () => {
 	const [email, setEmail] = React.useState('')
@@ -72,113 +75,138 @@ const Welcome = () => {
 
 	return (
 		<div className={styles.wrapper}>
-			<div className={styles.container}>
-				{isRegistering ? (
-					<div
-						className={styles.container__inner}
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') handleRegister()
-						}}
-					>
-						<h4>Регистрация</h4>
-						<input
-							className={styles.input}
-							type='email'
-							placeholder='E-mail'
-							value={registerInfo.email}
-							onChange={(e) =>
-								setRegisterInfo({
-									...registerInfo,
-									email: e.target.value,
-								})
-							}
-						/>
-						<input
-							className={styles.input}
-							type='password'
-							placeholder='Пароль'
-							value={registerInfo.password}
-							onChange={(e) =>
-								setRegisterInfo({
-									...registerInfo,
-									password: e.target.value,
-								})
-							}
-						/>
-						<input
-							className={styles.input}
-							type='password'
-							placeholder='Повторите пароль'
-							value={registerInfo.confirmPassword}
-							onChange={(e) =>
-								setRegisterInfo({
-									...registerInfo,
-									confirmPassword: e.target.value,
-								})
-							}
-						/>
+			<div className={styles.header}>
+				<Logo />
+				<ThemeSwitcher />
+			</div>
 
-						<Button
-							title='Зарегистрироваться'
-							onClick={handleRegister}
-						/>
-
-						<button
-							className={styles.registrationBtn}
-							onClick={() => setIsRegistering(false)}
-						>
-							Назад
-						</button>
-					</div>
-				) : (
-					<div
-						className={styles.container__inner}
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') handleSignIn()
-						}}
-					>
-						<h4 className={styles.title}>Вход в аккаунт</h4>
-
-						<input
-							className={styles.input}
-							type='email'
-							placeholder='E-mail'
-							value={email}
-							onChange={handleEmailChange}
-						/>
-
-						<input
-							className={styles.input}
-							type='password'
-							placeholder='Пароль'
-							value={password}
-							onChange={handlePasswordChange}
-						/>
-
-						<Button title='Войти' onClick={handleSignIn} />
-
-						<p className={styles.text}>
-							Еще нет аккаунта?{' '}
-							<button
-								className={styles.registrationBtn}
-								onClick={() => setIsRegistering(true)}
+			<div className={styles.main}>
+				<div className={styles.container}>
+					<Card>
+						{isRegistering ? (
+							<div
+								className={styles.container__inner}
+								onKeyDown={(e) => {
+									if (e.key === 'Enter') handleRegister()
+								}}
 							>
-								Регистрация
-							</button>
-						</p>
+								<h4>Регистрация</h4>
+								<input
+									className={styles.input}
+									type='email'
+									placeholder='E-mail'
+									value={registerInfo.email}
+									onChange={(e) =>
+										setRegisterInfo({
+											...registerInfo,
+											email: e.target.value,
+										})
+									}
+								/>
+								<input
+									className={styles.input}
+									type='password'
+									placeholder='Пароль'
+									value={registerInfo.password}
+									onChange={(e) =>
+										setRegisterInfo({
+											...registerInfo,
+											password: e.target.value,
+										})
+									}
+								/>
+								<input
+									className={styles.input}
+									type='password'
+									placeholder='Повторите пароль'
+									value={registerInfo.confirmPassword}
+									onChange={(e) =>
+										setRegisterInfo({
+											...registerInfo,
+											confirmPassword: e.target.value,
+										})
+									}
+								/>
 
-						<p className={styles.divider}>или</p>
+								<Button
+									title='Зарегистрироваться'
+									onClick={handleRegister}
+								/>
 
-						<div className={styles.socials}>
-							<button>
-								<FacebookIcon />
-							</button>
-							<button>
-								<TwitterIcon />
-							</button>
-						</div>
-					</div>
-				)}
+								<button
+									className={styles.registrationBtn}
+									onClick={() => setIsRegistering(false)}
+								>
+									Назад
+								</button>
+							</div>
+						) : (
+							<div
+								className={styles.container__inner}
+								onKeyDown={(e) => {
+									if (e.key === 'Enter') handleSignIn()
+								}}
+							>
+								<h4 className={styles.title}>
+									Вход в аккаунт
+								</h4>
+
+								<input
+									className={styles.input}
+									type='email'
+									placeholder='E-mail'
+									value={email}
+									onChange={handleEmailChange}
+								/>
+
+								<input
+									className={styles.input}
+									type='password'
+									placeholder='Пароль'
+									value={password}
+									onChange={handlePasswordChange}
+								/>
+
+								<Button
+									title='Войти'
+									onClick={handleSignIn}
+								/>
+
+								<p className={styles.text}>
+									Еще нет аккаунта?{' '}
+									<button
+										className={styles.registrationBtn}
+										onClick={() => setIsRegistering(true)}
+									>
+										Регистрация
+									</button>
+								</p>
+
+								<p className={styles.divider}>или</p>
+
+								<div className={styles.socials}>
+									<button>
+										<FacebookIcon />
+									</button>
+									<button>
+										<TwitterIcon />
+									</button>
+								</div>
+							</div>
+						)}
+					</Card>
+				</div>
+			</div>
+
+			<div className={styles.footer}>
+				<a
+					className={styles.footer__link}
+					href='https://www.figma.com/community/file/1042024350599049662'
+					target='_blank'
+					rel='noreferrer'
+				>
+					Design by Aleksandr Tereshchuk
+				</a>
 			</div>
 		</div>
 	)

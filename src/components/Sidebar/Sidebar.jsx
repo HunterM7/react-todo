@@ -1,10 +1,11 @@
 import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 
 import styles from './Sidebar.module.scss'
 import { auth } from '../../firebase.js'
 
+import Logo from '../Logo/Logo'
 import SidebarRow from './SidebarRow/SidebarRow'
 
 // Icons
@@ -13,7 +14,6 @@ import {
 	exitIcon,
 	familyIcon,
 	homeIcon,
-	logo,
 	sportIcon,
 	statsIcon,
 	workIcon,
@@ -84,7 +84,7 @@ const Sidebar = () => {
 		<aside className={styles.wrapper}>
 			<div className={styles.infoblock}>
 				<div className={styles.logo}>
-					<NavLink to='/'>{logo}</NavLink>
+					<Logo />
 				</div>
 
 				<div className={styles.categories}>

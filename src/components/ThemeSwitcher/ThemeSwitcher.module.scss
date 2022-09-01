@@ -1,12 +1,24 @@
 //? == Theme Switcher ==
 
+@import '../../styles/vars';
+
 .theme {
-	width: 24px;
-	height: 24px;
+	width: 40px;
+	height: 40px;
+
+	position: relative;
 
 	&__btn {
 		width: 100%;
 		height: 100%;
+
+		padding: 8px;
+
+		transition: $trans-slow;
+
+		position: absolute;
+		top: 0;
+		left: 0;
 
 		svg {
 			width: 100%;
@@ -18,21 +30,37 @@
 		}
 
 		&--light {
-			display: none;
+			left: -120%;
+
+			opacity: 0;
+
+			pointer-events: none;
 		}
 
 		&--dark {
-			display: block;
+			left: 0;
+
+			opacity: 1;
+
+			pointer-events: all;
 		}
 	}
 
 	&--dark {
 		.theme__btn--light {
-			display: block;
+			left: 0;
+
+			opacity: 1;
+
+			pointer-events: all;
 		}
 
 		.theme__btn--dark {
-			display: none;
+			left: 120%;
+
+			opacity: 0;
+
+			pointer-events: none;
 		}
 	}
 }

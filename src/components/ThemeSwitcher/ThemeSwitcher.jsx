@@ -20,18 +20,18 @@ const ThemeSwitcher = () => {
 		>
 			<button
 				className={`
-			${styles.theme__btn}
-			${styles['theme__btn--dark']}
-		`}
+					${styles.theme__btn}
+					${styles['theme__btn--dark']}
+				`}
 				onClick={() => setDarkTheme(true)}
 			>
 				{darkThemeIcon}
 			</button>
 			<button
 				className={`
-			${styles.theme__btn}
-			${styles['theme__btn--light']}
-		`}
+					${styles.theme__btn}
+					${styles['theme__btn--light']}
+				`}
 				onClick={() => setDarkTheme(false)}
 			>
 				{lightThemeIcon}
