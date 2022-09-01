@@ -11,17 +11,16 @@ import EditTask from '../../EditTask/EditTask'
 import Card from '../../Card/Card'
 import TaskRow from '../../TaskRow/TaskRow'
 import ProfileRow from '../../ProfileRow/ProfileRow'
-import useTheme from '../../../hooks/useTheme'
 import {
 	userIcon,
 	exitIcon,
 	premiumIcon,
 	settingsIcon,
 	darkThemeIcon,
-	lightThemeIcon,
 	contextMenuIcon,
 	arrowIcon,
 } from '../../../assets/icons'
+import ThemeSwitcher from '../../ThemeSwitcher/ThemeSwitcher'
 
 const Home = () => {
 	const [todos, setTodos] = useState([])
@@ -98,8 +97,6 @@ const Home = () => {
 		)
 	})
 
-	const [darkTheme, setDarkTheme] = useTheme(false)
-
 	return (
 		<div className={styles.wrapper}>
 			<Sidebar />
@@ -110,32 +107,8 @@ const Home = () => {
 						title='Новая задача'
 						onClick={() => setIsPopupVisible(true)}
 					/>
-					<div
-						className={`
-						${styles.theme}
-						${darkTheme ? styles['theme--dark'] : ''}
 
-					`}
-					>
-						<button
-							className={`
-								${styles.theme__btn}
-								${styles['theme__btn--dark']}
-							`}
-							onClick={() => setDarkTheme(true)}
-						>
-							{darkThemeIcon}
-						</button>
-						<button
-							className={`
-								${styles.theme__btn}
-								${styles['theme__btn--light']}
-							`}
-							onClick={() => setDarkTheme(false)}
-						>
-							{lightThemeIcon}
-						</button>
-					</div>
+					{<ThemeSwitcher />}
 
 					<div className={styles.profile}>
 						<p className={styles.profile__title}>

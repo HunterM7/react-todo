@@ -1,0 +1,38 @@
+//? == Theme Switcher ==
+
+.theme {
+	width: 24px;
+	height: 24px;
+
+	&__btn {
+		width: 100%;
+		height: 100%;
+
+		svg {
+			width: 100%;
+			height: 100%;
+
+			path {
+				stroke: var(--Color-Secondary);
+			}
+		}
+
+		&--light {
+			display: none;
+		}
+
+		&--dark {
+			display: block;
+		}
+	}
+
+	&--dark {
+		.theme__btn--light {
+			display: block;
+		}
+
+		.theme__btn--dark {
+			display: none;
+		}
+	}
+}
