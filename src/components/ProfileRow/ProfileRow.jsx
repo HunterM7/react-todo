@@ -9,7 +9,7 @@ const ProfileRow = ({
 }) => {
 	return (
 		<button className={styles.wrapper} onClick={onClick}>
-			<img className={styles.img} src={img} alt='Иконка' />
+			<div className={styles.img}>{img}</div>
 			<h5 className={styles.title}>{title}</h5>
 		</button>
 	)

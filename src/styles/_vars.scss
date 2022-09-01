@@ -4,7 +4,16 @@
 $PrimaryGreen: #29a19c;
 $PrimaryYellow: #ecca75;
 $PrimaryRed: #f05454;
+
+$White: #ffffff;
 $Black: #000000;
+
+$Light1: #fafafa;
+$Light2: #f9f9f9;
+
+$Dark1: #2c3440;
+$Dark1: #222831;
+$Dark1: #282846;
 
 // -- Light Theme --
 $Color-White-LT: #ffffff;
@@ -15,6 +24,30 @@ $Color-BG-LT: #fafafa;
 $Color-White-DT: #f9f9f9;
 $Color-Dark-DT: #2c3440;
 $Color-BG-DT: #222831;
+
+// ! ======= ======= =======
+
+// -- Light Theme --
+
+html[data-dark-theme='false'] {
+	--Color-Primary: #ffffff;
+	--Color-Secondary: #282846;
+	--Color-Text: #282846;
+	--Color-Gray: #a9a9b5;
+	--Color-Border: #e9e9ec;
+	--Color-BG1: #ffffff;
+	--Color-BG2: #fafafa;
+}
+
+html[data-dark-theme='true'] {
+	--Color-Primary: #2c3440;
+	--Color-Secondary: #f9f9f9;
+	--Color-Text: #f9f9f9;
+	--Color-Gray: #7e838a;
+	--Color-Border: #555b65;
+	--Color-BG1: #2c3440;
+	--Color-BG2: #222831;
+}
 
 //* -- Shadows --
 $SmoothShadow: 0px 10px 25px rgba(29, 52, 54, 0.08);

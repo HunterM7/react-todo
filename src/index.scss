@@ -31,14 +31,14 @@ h5 {
 	font-size: 16px;
 	font-weight: 400;
 	letter-spacing: 0.025em;
-	color: $Color-Dark-LT;
+	color: var(--Color-Text);
 }
 
 h6 {
 	font-size: 14px;
 	font-weight: 700;
 	letter-spacing: 0.02em;
-	color: $Color-Dark-LT;
+	color: var(--Color-Text);
 }
 
 p {
@@ -47,7 +47,7 @@ p {
 	font-weight: 400;
 	letter-spacing: 0.02em;
 	line-height: 1.5;
-	color: $Color-Dark-LT;
+	color: var(--Color-Text);
 }
 
 body {
@@ -55,5 +55,5 @@ body {
 	font-size: 14px;
 	font-weight: 400;
 	letter-spacing: 0.02em;
-	color: $Color-Dark-LT;
+	color: var(--Color-Text);
 }

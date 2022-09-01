@@ -20,7 +20,7 @@
 
 	overflow-y: auto;
 
-	background-color: $Color-BG-LT;
+	background-color: var(--Color-BG2);
 }
 
 .header {
@@ -61,6 +61,12 @@
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
+
+		svg {
+			rect {
+				fill: var(--Color-Gray);
+			}
+		}
 	}
 
 	&__main {
@@ -87,16 +93,39 @@
 	}
 }
 
-.themeBtn {
+.theme {
 	width: 24px;
 	height: 24px;
 
-	svg {
+	&__btn {
 		width: 100%;
 		height: 100%;
 
-		path {
-			stroke: rgba($Color-Dark-LT, 0.7);
+		svg {
+			width: 100%;
+			height: 100%;
+
+			path {
+				stroke: var(--Color-Secondary);
+			}
+		}
+
+		&--light {
+			display: none;
+		}
+
+		&--dark {
+			display: block;
+		}
+	}
+
+	&--dark {
+		.theme__btn--light {
+			display: block;
+		}
+
+		.theme__btn--dark {
+			display: none;
 		}
 	}
 }
@@ -125,7 +154,7 @@
 		height: 24px;
 
 		border-radius: 5px;
-		background-color: $Color-BG-LT;
+		background-color: var(--Color-BG1);
 		box-shadow: $SmoothShadow;
 
 		svg {
@@ -160,7 +189,7 @@
 	width: 100vw;
 	height: 100vh;
 
-	background-color: rgba($Color-Dark-LT, 0.3);
+	background-color: rgba($Black, 0.3);
 
 	position: absolute;
 	top: 0;

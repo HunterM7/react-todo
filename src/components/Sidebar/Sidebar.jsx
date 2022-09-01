@@ -7,27 +7,39 @@ import { auth } from '../../firebase.js'
 
 import SidebarRow from './SidebarRow/SidebarRow'
 
+// Icons
+import {
+	compareIcon,
+	exitIcon,
+	familyIcon,
+	homeIcon,
+	logo,
+	sportIcon,
+	statsIcon,
+	workIcon,
+} from '../../assets/icons'
+
 const Sidebar = () => {
 	const categories = [
 		{
 			title: 'Дом',
 			isActive: true,
-			img: '/img/icons/home.svg',
+			img: homeIcon,
 		},
 		{
 			title: 'Семья',
 			isActive: false,
-			img: '/img/icons/family.svg',
+			img: familyIcon,
 		},
 		{
 			title: 'Работа',
 			isActive: false,
-			img: '/img/icons/work.svg',
+			img: workIcon,
 		},
 		{
 			title: 'Спорт',
 			isActive: false,
-			img: '/img/icons/sport.svg',
+			img: sportIcon,
 		},
 	]
 
@@ -35,12 +47,12 @@ const Sidebar = () => {
 		{
 			title: 'Статистика',
 			isActive: false,
-			img: '/img/icons/stats.svg',
+			img: statsIcon,
 		},
 		{
 			title: 'Сравнить',
 			isActive: false,
-			img: '/img/icons/compare.svg',
+			img: compareIcon,
 		},
 	]
 
@@ -72,9 +84,7 @@ const Sidebar = () => {
 		<aside className={styles.wrapper}>
 			<div className={styles.infoblock}>
 				<div className={styles.logo}>
-					<NavLink to='/'>
-						<img src='/img/logo.svg' alt='Task Book' />
-					</NavLink>
+					<NavLink to='/'>{logo}</NavLink>
 				</div>
 
 				<div className={styles.categories}>
@@ -91,7 +101,7 @@ const Sidebar = () => {
 				<SidebarRow
 					title='Выйти'
 					isActive={false}
-					img='/img/icons/exit.svg'
+					img={exitIcon}
 					onClick={handleSignOut}
 				/>
 			</div>
