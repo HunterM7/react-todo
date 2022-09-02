@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, {
+	useContext,
+	useEffect,
+	useState,
+} from 'react'
 import { onValue, ref } from 'firebase/database'
 
 import styles from './Home.module.scss'
@@ -35,7 +39,7 @@ const Home = () => {
 
 	// Theme Function
 	const { darkTheme, setDarkTheme } =
-		React.useContext(ThemeContext)
+		useContext(ThemeContext)
 
 	// SignOut Function
 	const { handleSignOut } = React.useContext(AuthContext)
