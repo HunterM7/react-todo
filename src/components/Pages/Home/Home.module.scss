@@ -141,6 +141,21 @@
 		}
 	}
 
+	&__bg {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+
+		z-index: 100;
+
+		&.active {
+			display: block;
+		}
+	}
+
 	&__container {
 		display: grid;
 		row-gap: 25px;
@@ -148,7 +163,9 @@
 }
 
 .newTask {
-	display: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 100vw;
 	height: 100vh;
 
@@ -158,10 +175,4 @@
 	top: 0;
 	left: 0;
 	z-index: 1000;
-
-	&.active {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
 }

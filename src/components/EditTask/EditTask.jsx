@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { ref, update } from 'firebase/database'
 
 import styles from './EditTask.module.scss'
@@ -11,12 +11,14 @@ const NewTask = ({
 	currentTodo,
 	setCurrentTodo,
 }) => {
+	const [todo, setTodo] = React.useState(currentTodo.todo)
+
 	// Update Todo function
 	const handleUpdate = (uid) => {
-		update(
-			ref(db, `/${auth.currentUser.uid}/${uid}`),
-			currentTodo,
-		)
+		update(ref(db, `/${auth.currentUser.uid}/${uid}`), {
+			...currentTodo,
+			todo: todo,
+		})
 
 		setCurrentTodo({})
 		closeFunc(false)
@@ -33,8 +35,6 @@ const NewTask = ({
 		if (e.key === 'Enter') handleUpdate(currentTodo.uidd)
 		if (e.key === 'Escape') canceling()
 	}
-
-	useEffect(() => {}, [currentTodo]) //?!
 
 	return (
 		<div
@@ -55,13 +55,8 @@ const NewTask = ({
 							type='text'
 							placeholder='Опиши задачу'
 							className={styles.desc__input}
-							value={currentTodo.todo}
-							onChange={(e) =>
-								setCurrentTodo({
-									...currentTodo,
-									todo: e.target.value,
-								})
-							}
+							value={todo}
+							onChange={(e) => setTodo(e.target.value)}
 						/>
 					</div>
 					<div className={styles.buttons}>

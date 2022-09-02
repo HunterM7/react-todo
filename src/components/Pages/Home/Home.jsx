@@ -200,29 +200,35 @@ const Home = () => {
 				</div>
 			</main>
 
-			<div
-				className={`
-				${styles.newTask}
-				${isPopupVisible ? styles.active : ''}
-			`}
-				onClick={() => setIsPopupVisible(false)}
-			>
-				<NewTask closeFunc={setIsPopupVisible} />
-			</div>
+			{isPopupVisible && (
+				<div
+					className={styles.newTask}
+					onClick={() => setIsPopupVisible(false)}
+				>
+					<NewTask closeFunc={setIsPopupVisible} />
+				</div>
+			)}
+
+			{isEditVisible && (
+				<div
+					className={styles.newTask}
+					onClick={() => setIsEditVisible(false)}
+				>
+					<EditTask
+						closeFunc={setIsEditVisible}
+						currentTodo={currentTodo}
+						setCurrentTodo={setCurrentTodo}
+					/>
+				</div>
+			)}
 
 			<div
 				className={`
-				${styles.newTask}
-				${isEditVisible ? styles.active : ''}
-			`}
-				onClick={() => setIsEditVisible(false)}
-			>
-				<EditTask
-					closeFunc={setIsEditVisible}
-					currentTodo={currentTodo}
-					setCurrentTodo={setCurrentTodo}
-				/>
-			</div>
+					${styles.profile__bg}
+					${isProfileVisible ? styles.active : ''}
+				`}
+				onClick={() => setIsProfileVisible(false)}
+			></div>
 		</div>
 	)
 }

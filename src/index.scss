@@ -58,6 +58,13 @@ body {
 	color: var(--Color-Text);
 }
 
+input {
+	padding: 8px 15px;
+
+	border-radius: 8px;
+	border: 1px solid var(--Color-Border);
+}
+
 #root {
 	width: 100vw;
 	height: 100vh;
