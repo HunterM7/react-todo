@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import styles from './ThemeSwitcher.module.scss'
-import useTheme from '../../hooks/useTheme'
 
+import { ThemeContext } from '../../context'
 import {
 	darkThemeIcon,
 	lightThemeIcon,
 } from '../../assets/icons'
 
 const ThemeSwitcher = () => {
-	const [darkTheme, setDarkTheme] = useTheme(false)
+	const { darkTheme, setDarkTheme } =
+		useContext(ThemeContext)
 
 	return (
 		<div

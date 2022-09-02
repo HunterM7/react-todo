@@ -11,7 +11,7 @@ const NewTask = ({
 	currentTodo,
 	setCurrentTodo,
 }) => {
-	// Add Todo function
+	// Update Todo function
 	const handleUpdate = (uid) => {
 		update(
 			ref(db, `/${auth.currentUser.uid}/${uid}`),

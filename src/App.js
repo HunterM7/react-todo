@@ -12,12 +12,16 @@ import {
 
 import './App.scss'
 import { auth } from './firebase'
-import { AuthContext } from './context'
+import { AuthContext, ThemeContext } from './context'
 
 import Home from './components/Pages/Home/Home'
 import Welcome from './components/Pages/Welcome/Welcome'
+import useTheme from './hooks/useTheme'
 
 const App = () => {
+	// Theme State
+	const [darkTheme, setDarkTheme] = useTheme(false)
+
 	// Redirect Hook
 	const navigate = useNavigate()
 
@@ -59,10 +63,14 @@ const App = () => {
 					handleRegister,
 				}}
 			>
-				<Routes>
-					<Route path='/' element={<Welcome />} />
-					<Route path='home' element={<Home />} />
-				</Routes>
+				<ThemeContext.Provider
+					value={{ darkTheme, setDarkTheme }}
+				>
+					<Routes>
+						<Route path='/' element={<Welcome />} />
+						<Route path='home' element={<Home />} />
+					</Routes>
+				</ThemeContext.Provider>
 			</AuthContext.Provider>
 		</div>
 	)

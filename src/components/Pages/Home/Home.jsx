@@ -3,7 +3,7 @@ import { onValue, ref } from 'firebase/database'
 
 import styles from './Home.module.scss'
 import { auth, db } from '../../../firebase'
-import { AuthContext } from '../../../context'
+import { AuthContext, ThemeContext } from '../../../context'
 import {
 	userIcon,
 	exitIcon,
@@ -12,6 +12,7 @@ import {
 	darkThemeIcon,
 	contextMenuIcon,
 	arrowIcon,
+	lightThemeIcon,
 } from '../../../assets/icons'
 
 import Sidebar from '../../Sidebar/Sidebar'
@@ -31,6 +32,10 @@ const Home = () => {
 		useState(false)
 	const [isEditVisible, setIsEditVisible] = useState(false)
 	const [currentTodo, setCurrentTodo] = useState({})
+
+	// Theme Function
+	const { darkTheme, setDarkTheme } =
+		React.useContext(ThemeContext)
 
 	// SignOut Function
 	const { handleSignOut } = React.useContext(AuthContext)
@@ -74,9 +79,9 @@ const Home = () => {
 			onClickFunc: () => console.log('Личный кабинет'),
 		},
 		{
-			title: 'Темный режим',
-			img: darkThemeIcon,
-			onClickFunc: () => console.log('Темный режим'),
+			title: darkTheme ? 'Светлый режим' : 'Темный режим',
+			img: darkTheme ? lightThemeIcon : darkThemeIcon,
+			onClickFunc: () => setDarkTheme(!darkTheme),
 		},
 		{
 			title: 'Настройки',
