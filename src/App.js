@@ -20,7 +20,7 @@ import useTheme from './hooks/useTheme'
 
 const App = () => {
 	// Theme State
-	const [darkTheme, setDarkTheme] = useTheme()
+	const {darkTheme, setDarkTheme} = useTheme()
 
 	// Redirect Hook
 	const navigate = useNavigate()

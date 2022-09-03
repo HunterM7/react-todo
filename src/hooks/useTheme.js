@@ -1,8 +1,15 @@
 import { useLayoutEffect, useState } from 'react'
 
+// Theme of the user system
+const isDarkTheme = window?.matchMedia(
+	'(prefers-color-scheme: dark)',
+).matches
+
+const defaultTheme = isDarkTheme ? true : false
+
 const useTheme = () => {
 	const [darkTheme, setDarkTheme] = useState(
-		localStorage.getItem('dark-theme') || false,
+		localStorage.getItem('dark-theme') || defaultTheme,
 	)
 
 	useLayoutEffect(() => {
@@ -13,7 +20,7 @@ const useTheme = () => {
 		localStorage.setItem('dark-theme', darkTheme)
 	}, [darkTheme])
 
-	return [darkTheme, setDarkTheme]
+	return { darkTheme, setDarkTheme }
 }
 
 export default useTheme

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 
 import styles from './ThemeSwitcher.module.scss'
-
 import { ThemeContext } from '../../context'
+
 import {
 	darkThemeIcon,
 	lightThemeIcon,
