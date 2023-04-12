@@ -5,12 +5,18 @@ import { BrowserRouter } from 'react-router-dom'
 import 'scss/index.scss'
 
 import App from 'components/App/App'
+import { Provider } from 'react-redux'
+
+// Redux
+import { store } from 'redux/store'
 
 const Main = () => {
   return (
     <React.StrictMode>
       <BrowserRouter>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </BrowserRouter>
     </React.StrictMode>
   )

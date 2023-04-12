@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
-
-import styles from './Main.module.scss'
-
-import Card from '../../components/Card/Card'
-import { contextMenuIcon } from '../../assets/icons'
-import Button from '../../components/Button/Button'
-import { auth, db } from '../../firebase'
 import { onValue, ref } from 'firebase/database'
-import TaskRow from '../../components/TaskRow/TaskRow'
+
+import { auth, db } from '../../firebase'
+import { contextMenuIcon } from '../../assets/icons'
+
+// Components
+import Card from 'components/Card/Card'
+import Button from 'components/Button/Button'
+import TaskRow from 'components/TaskRow/TaskRow'
+
+// Styles
+import styles from './Main.module.scss'
 
 const Main = ({ setIsPopupVisible, setIsEditVisible, setCurrentTodo }) => {
   const [todos, setTodos] = useState([])
