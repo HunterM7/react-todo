@@ -1,44 +1,42 @@
 import React, { useContext } from 'react'
 
-import styles from './ThemeSwitcher.module.scss'
 import { ThemeContext } from '../../context'
 
-import {
-	darkThemeIcon,
-	lightThemeIcon,
-} from '../../assets/icons'
+import { darkThemeIcon, lightThemeIcon } from '../../assets/icons'
+
+// Styles
+import styles from './ThemeSwitcher.module.scss'
 
 const ThemeSwitcher = () => {
-	const { darkTheme, setDarkTheme } =
-		useContext(ThemeContext)
+  const { theme, setTheme } = useContext(ThemeContext)
 
-	return (
-		<div
-			className={`
+  return (
+    <div
+      className={`
 				${styles.theme}
-				${darkTheme ? styles['theme--dark'] : ''}
+				${styles[`theme--${theme}`]}
 			`}
-		>
-			<button
-				className={`
+    >
+      <button
+        className={`
 					${styles.theme__btn}
 					${styles['theme__btn--dark']}
 				`}
-				onClick={() => setDarkTheme(true)}
-			>
-				{darkThemeIcon}
-			</button>
-			<button
-				className={`
+        onClick={() => setTheme('dark')}
+      >
+        {darkThemeIcon}
+      </button>
+      <button
+        className={`
 					${styles.theme__btn}
 					${styles['theme__btn--light']}
 				`}
-				onClick={() => setDarkTheme(false)}
-			>
-				{lightThemeIcon}
-			</button>
-		</div>
-	)
+        onClick={() => setTheme('light')}
+      >
+        {lightThemeIcon}
+      </button>
+    </div>
+  )
 }
 
 export default ThemeSwitcher

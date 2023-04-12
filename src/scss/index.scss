@@ -1,5 +1,5 @@
-@import './styles/normalize';
-@import './styles/vars';
+@import 'normalize';
+@import 'vars';
 
 // font-family: 'Montserrat', sans-serif;
 // font-family: 'Nunito', sans-serif;
@@ -58,11 +58,16 @@ body {
 	color: var(--Color-Text);
 }
 
-input {
+input,
+textarea {
 	padding: 8px 15px;
 
 	border-radius: 8px;
 	border: 1px solid var(--Color-Border);
+}
+
+textarea {
+	resize: none;
 }
 
 #root {

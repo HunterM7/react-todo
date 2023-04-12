@@ -5,22 +5,22 @@ const isDarkTheme = window?.matchMedia(
 	'(prefers-color-scheme: dark)',
 ).matches
 
-const defaultTheme = isDarkTheme ? true : false
+const defaultTheme = isDarkTheme ? 'dark' : 'light'
 
 const useTheme = () => {
-	const [darkTheme, setDarkTheme] = useState(
-		localStorage.getItem('dark-theme') || defaultTheme,
+	const [theme, setTheme] = useState(
+		localStorage.getItem('app-theme') || defaultTheme,
 	)
 
 	useLayoutEffect(() => {
 		document.documentElement.setAttribute(
-			'data-dark-theme',
-			darkTheme,
+			'data-theme',
+			theme,
 		)
-		localStorage.setItem('dark-theme', darkTheme)
-	}, [darkTheme])
+		localStorage.setItem('app-theme', theme)
+	}, [theme])
 
-	return { darkTheme, setDarkTheme }
+	return { theme, setTheme }
 }
 
 export default useTheme

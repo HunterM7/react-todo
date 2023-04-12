@@ -1,6 +1,6 @@
 //? == Home Page ==
 
-@import '../../../styles/vars';
+@import 'scss/vars';
 
 .wrapper {
 	display: grid;
@@ -32,50 +32,7 @@
 	margin-bottom: 30px;
 }
 
-.content {
-	display: grid;
-	grid-template-columns: 1.2fr 1fr;
-	column-gap: 30px;
-}
-
-.tasks {
-	&__header {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-
-		margin-bottom: 20px;
-	}
-
-	&__title {
-	}
-
-	&__settings {
-		width: 28px;
-		height: 24px;
-
-		opacity: 0.4;
-
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-
-		svg {
-			rect {
-				fill: var(--Color-Gray);
-			}
-		}
-	}
-
-	&__main {
-		display: grid;
-		row-gap: 10px;
-	}
-
-	&__text {
-	}
+.main__content {
 }
 
 .noTasks {

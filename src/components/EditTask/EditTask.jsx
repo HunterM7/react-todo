@@ -51,7 +51,7 @@ const NewTask = ({
 						<h6 className={styles.desc__title}>
 							Что нужно сделать?
 						</h6>
-						<input
+						<textarea
 							type='text'
 							placeholder='Опиши задачу'
 							className={styles.desc__input}

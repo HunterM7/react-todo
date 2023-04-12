@@ -29,7 +29,7 @@ $Color-BG-DT: #222831;
 
 // -- Light Theme --
 
-html[data-dark-theme='false'] {
+html[data-theme='light'] {
 	--Color-Primary: #ffffff;
 	--Color-Secondary: #282846;
 	--Color-Text: #282846;
@@ -39,7 +39,7 @@ html[data-dark-theme='false'] {
 	--Color-BG2: #fafafa;
 }
 
-html[data-dark-theme='true'] {
+html[data-theme='dark'] {
 	--Color-Primary: #2c3440;
 	--Color-Secondary: #f9f9f9;
 	--Color-Text: #f9f9f9;
